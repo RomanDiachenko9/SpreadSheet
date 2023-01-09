@@ -1,0 +1,101 @@
+body {
+    width: auto;
+    color: #ddd;
+    padding: 50px;
+    font-family: "Trebuchet MS";
+    background: linear-gradient(90deg, #00416A, #7EC1E3, #00416A);
+}
+
+
+.createTable {
+    background-color: #7EC1E3;
+    color: #00416A;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    font-family: inherit;
+}
+.createTable:hover {
+    background-color: #1BA4E9;
+}
+
+table {
+    table-layout: fixed;
+    color: black;
+}
+
+td {
+    min-width: 100px;
+    max-width: 100px;
+    height: 25px;
+    border: 1px solid #999999;
+}
+
+.titleCol {
+    background-color: #CCCCCC;
+    text-align: center;
+}
+
+.row {
+    background-color: #FFFFFF;
+}
+
+.evenRow {
+    background-color: #EEEEEE;
+}
+
+.titleRow {
+    background-color: #CCCCCC;
+    text-align: center;
+}
+
+.inputs {
+    width: 100px;
+    text-align: center;
+    border: 2px;
+    background-color: #B7D7E7;
+    color: #010E15;
+    height: 20px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+}
+
+.cell {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.active-cell {
+    border: 1px solid red;
+    width: 100px;
+}
+
+.active-cell-input {
+    border: 1px solid green;
+    width: 96px;
+}
+
+.input-width {
+    width: 92px;
+    height: 100%;
+    border: none;
+}
+
+.table-text {
+    width: 92px;
+    background: inherit;
+    text-overflow: ellipsis;
+    border: none;
+}
+
+.table-text:focus {
+    outline: none;
+}
+
+
+
+
+
+

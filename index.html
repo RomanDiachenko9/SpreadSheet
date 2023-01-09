@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Sheet</title>
+    <link href="spreadsheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div>
+        <input class="inputs"
+               id="rows"
+               value="5"
+               type="number"
+               placeholder="Rows"> </input>
+        <input class="inputs"
+               id="cols"
+               value="5"
+               type="number"
+               placeholder="Columns"> </input>
+        <button class="createTable" type="button" id="generate">Create</button>
+    </div>
+    <div id="container"></div>
+    <div>
+        <textarea id="text-area" rows="10" cols="50"></textarea>
+    </div>
+    <div>
+        <button class="createTable" id="exportTable" onclick="">Export table</button>
+        <button class="createTable" id="importTable" onclick="">Import table</button>
+    </div>
+<script src="spreadsheet.js"></script>
+</body>
+</html>
