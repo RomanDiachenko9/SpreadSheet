@@ -61,20 +61,23 @@ td {
 }
 
 .cell {
-    max-width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .active-cell {
-    border: 1px solid red;
-    width: 100px;
+    border: 2px solid red;
+    max-width: 96px;
+    min-width: 96px;
+    height: 21px;
 }
 
 .active-cell-input {
-    border: 1px solid green;
-    width: 96px;
+    border: 2px solid green;
+    max-width: 96px;
+    min-width: 96px;
+    height: 21px;
 }
 
 .input-width {

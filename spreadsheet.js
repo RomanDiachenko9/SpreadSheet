@@ -9,7 +9,6 @@ const textArea = document.getElementById('text-area');
 const cols = document.getElementById('cols');
 const rows = document.getElementById('rows');
 
-let isListenerCreate = false;
 
 
 class CellInterface {
@@ -95,9 +94,25 @@ function updatePrevCell() {
 			activeInput.innerHTML = '';
 			activeInput.textContent = textContent;
 		}
-	}
 
-	return textContent;
+		const data = Table.getTableData();
+		const cellData = data.find(cell => cell.id === activeInputCell);
+		if (!cellData && textContent) {
+			console.log('1');
+			Table.setTableData([...data, { id: activeInputCell, value: textContent }]);
+		} else if (cellData) {
+			const filteredData = data.filter(el => el.id !== activeInputCell);
+			if (!textContent) {
+				console.log('2');
+				Table.setTableData(filteredData);
+			} else {
+				console.log('3');
+				Table.setTableData([...filteredData, { id: activeInputCell, value: textContent }])
+			}
+		}
+
+		Table.setActiveInputCell();
+	}
 }
 
 
@@ -112,21 +127,7 @@ function onClick(e) {
 
 		const activeInputCell = Table.getActiveInputCell();
 		if (activeInputCell) {
-			const textContent = updatePrevCell();
-			const data = Table.getTableData();
-			const cellData = data.find(cell => cell.id === activeInputCell);
-			if (!cellData && textContent) {
-				Table.setTableData([...data, { id: activeInputCell, value: textContent }]);
-			} else if (cellData) {
-				const filteredData = data.filter(el => el.id !== activeInputCell);
-				if (!textContent) {
-					Table.setTableData(filteredData);
-				} else {
-					Table.setTableData([...filteredData, { id: activeInputCell, value: textContent }])
-				}
-			}
-
-			Table.setActiveInputCell()
+			updatePrevCell();
 		}
 		Table.setActiveCell(e.target.id)
 
@@ -146,8 +147,6 @@ function onDoubleClick(e) {
 	const cellClass = e.target.getAttribute('class');
 	e.target.setAttribute('class', `${cellClass} active-cell-input`);
 }
-
-
 
 
 function createTable(cols, rows) {
@@ -252,7 +251,6 @@ document.addEventListener("keydown", function(event) {
 			const cellClass = document.getElementById(newId).getAttribute('class');
 			document.getElementById(newId).setAttribute('class', `${cellClass} active-cell`);
 			Table.setActiveCell(newId);
-
 		}
 	} else if (event.code === 'Tab') {
 		event.preventDefault();
@@ -265,7 +263,6 @@ document.addEventListener("keydown", function(event) {
 			const cellClass = document.getElementById(newId).getAttribute('class');
 			document.getElementById(newId).setAttribute('class', `${cellClass} active-cell`);
 			Table.setActiveCell(newId);
-
 		}
 	} else if (event.code === 'Backspace') {
 		const activeCellId = Table.getActiveCell()
@@ -282,12 +279,11 @@ generateButton.addEventListener('click', function (){
 		rows: rows.value,
 		data: []
 	})
-
 	const colsCount = Table.getTableCols();
 	const rowsCount = Table.getTableRows();
-
 	createTable(colsCount, rowsCount);
 });
+
 
 exportButton.addEventListener('click', function () {
 	const tableOptions = Table.getTableOptions();
